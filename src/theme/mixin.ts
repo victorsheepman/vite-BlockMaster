@@ -1,6 +1,7 @@
-import { media, style } from "typestyle";
+import { keyframes, media, style } from "typestyle";
+import { CSSProperties } from "typestyle/lib/types";
 
-export const buttonMixin = (width: string, color:string) => {
+export const buttonMixin = (width: string, color:string):CSSProperties => {
     const isDark = color === 'rgba(12, 14, 22, 1)' ? true : false
     return {
         width: width, 
@@ -35,3 +36,16 @@ export const buttonSmall = style(
     }
    )
 )
+
+export const open = keyframes({
+    '0%': { opacity:0 },
+    '100%': { opacity:1 }
+})
+  
+
+
+
+export const porcentaje = ($width:number) =>{
+    const result = $width * 100/1366
+    return  `${result}%`;
+}

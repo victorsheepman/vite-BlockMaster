@@ -1,5 +1,6 @@
 import React from "react";
-import { keyframes, media, style } from "typestyle";
+import { media, style } from "typestyle";
+import { open } from "../theme";
 export const MovieList = ({children}:{children:React.ReactNode})=>(
     <div>
         <section className={movieListStyle}>
@@ -7,12 +8,6 @@ export const MovieList = ({children}:{children:React.ReactNode})=>(
         </section>
     </div>
 )
-
-const open = keyframes({
-    '0%': { opacity:0 },
-    '100%': { opacity:1 }
-})
-  
 
 const movieListStyle = style(
     {
@@ -28,7 +23,7 @@ const movieListStyle = style(
         animationFillMode:'forwards'
     },
     media(
-        {minWidth:500},
+        {maxWidth:600},
         {
             gridTemplateColumns: 'repeat(auto-fill, 80px)',
             gap: '12px',
@@ -37,7 +32,7 @@ const movieListStyle = style(
     media(
         {minWidth:768},
         {
-             gridTemplateColumns: 'repeat(auto-fill, 180px)',
+            gridTemplateColumns: 'repeat(auto-fill, 180px)',
             gap: '12px',
         }
     )

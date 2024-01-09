@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <MovieList>
-          {state.movieList.map(movie =>(<MovieCard key={movie.id} vote_average={movie.vote_average} poster_path={movie.poster_path} />))}
+          {state.movieList.map(movie =>(<MovieCard key={movie.id} vote_average={movie.vote_average} poster_path={movie.poster_path} title={movie.title} overview={movie.overview} />))}
       </MovieList>
     </>
   )
