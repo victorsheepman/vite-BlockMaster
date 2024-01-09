@@ -12,7 +12,7 @@ type ListMovie = {
     leastValued: number[],
 }
 
-interface MovieState {
+export interface MovieState {
     movieList: Movie[],
     page:number,
     filter: FilterMovie,
