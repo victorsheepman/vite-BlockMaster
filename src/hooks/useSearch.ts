@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { MovieState } from "../reducer"
+import { MovieState, setMovie, useAppDispatch } from "../reducer"
 import { Movie } from "../schema"
 
 function filterByTitle(title:string, movies:Movie[]) {
@@ -13,21 +13,22 @@ function filterByTitle(title:string, movies:Movie[]) {
 }
 
 export const useSearch =(state:MovieState)=>{
+    const dispatch = useAppDispatch() 
     const [search, setSearch] = useState('');
   
     const [openModal, setOpenModal] = useState(false);
 
 
     const searchMovie = (query:string, list:Movie[]) => {
-        if (isNaN(Number(query))) {
-          return filterByTitle(query, list)
-        }else{
-          return 'no hay palabra' 
-        }
+      if (isNaN(Number(query))) {
+        return filterByTitle(query, list)
+      }else{
+        return []
+      }
     }
 
     const movie = searchMovie(search,state.movieList)
-
+    dispatch(setMovie(movie))
     return {
         movie,
         search,

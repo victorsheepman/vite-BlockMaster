@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-//import type { RootState } from './store'
 import { FilterMovie, Movie } from '../schema'
 import { getAllIds, getLeastValuedIds, getMostValuedIds } from '../utils/normalize'
 import { movieListMock } from '../mock'
@@ -15,6 +14,7 @@ type ListMovie = {
 export interface MovieState {
     movieList: Movie[],
     page:number,
+    movie:Movie[],
     filter: FilterMovie,
     list: ListMovie
 }
@@ -23,6 +23,7 @@ export interface MovieState {
 const initialState: MovieState = {
   movieList:[],
   page:1,
+  movie:[],
   filter:FilterMovie.All,
   list:{
     all: getAllIds(movieListMock),
@@ -49,11 +50,14 @@ export const movieSlice = createSlice({
     },
     setPage:(state,  action: PayloadAction<number>)=>{
         state.page = action.payload
+    },
+    setMovie:(state, action:PayloadAction<Movie[]>)=>{
+      state.movie = action.payload
     }
   },
 })
 
-export const { addMovie, setFilter, setPage } = movieSlice.actions
+export const { addMovie, setFilter, setPage, setMovie } = movieSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectMovie = (state: RootState) => state.movies
