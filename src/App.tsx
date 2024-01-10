@@ -4,6 +4,7 @@ import { addMovie, useAppDispatch, useAppSelector } from './reducer';
 import { MovieList } from './containers/MovieList';
 import { MovieCard } from './components/MovieCard';
 import { MovieHeader } from './containers/MovieHeader';
+import { removeRepeat } from './utils';
 
 
 
@@ -25,7 +26,7 @@ function App() {
       
   const list = useMemo(() => {    
     const idList = state.list[state.filter]
-    return state.movieList.filter(i=> idList.includes(i.id))
+    return removeRepeat(state.movieList.filter(i=> idList.includes(i.id)))
   }, [state.filter, state.movieList])     
   return (
     <>

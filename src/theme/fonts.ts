@@ -86,6 +86,6 @@ export const font = stylesheet({
         lineHeight: '28px',
         letterSpacing: '0px',
         textAlign: 'center',
-    }
+    },
 })
 

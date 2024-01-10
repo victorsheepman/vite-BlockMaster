@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { classes, media, style } from 'typestyle';
-import { colorNormal, colorYellow, label, labelText } from '../theme';
+import { colorNormal, colorYellow, label, labelImg, labelText } from '../theme';
 import { MovieModal } from './MovieModal';
 
 interface MovieCardProps {
@@ -19,7 +19,7 @@ export const MovieCard:React.FC<MovieCardProps> = ({vote_average, poster_path, o
         <img  className={movieCardImg} src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
         <span className={( classes(label,labelText,vote_average >=7 ? style({border: `3px solid ${colorYellow.toString()}`}): style({border:`3px solid ${colorNormal.toString()}`}))) }>
             {vote_average}
-            <img className={style({width:'24px', height:'24px'}, media({maxWidth:600},{width:'14px',height:'14px'}))} src="src/assets/Property 1=star.svg" alt="" />
+            <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
         </span>
         {
             modal ? 

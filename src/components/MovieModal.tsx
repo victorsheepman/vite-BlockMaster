@@ -1,6 +1,6 @@
 import React from 'react'
 import { classes, media, style } from 'typestyle'
-import { buttonImg, buttonMixin, buttonSmall, colorNormal, colorWhite, colorYellow, label, labelText, monstserrat, open, porcentaje } from '../theme'
+import { buttonImg, buttonMixin, buttonSmall, colorNormal, colorWhite, colorYellow, label, labelImg, labelText, monstserrat, open, porcentaje } from '../theme'
 
 interface MovieModalProps {
     title:string
@@ -33,7 +33,7 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
                 <img src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
                 <span className={( classes(label,labelText,vote_average >=7 ? style({border: `3px solid ${colorYellow.toString()}`}): style({border:`3px solid ${colorNormal.toString()}`}))) }>
                     {vote_average}
-                    <img src="src/assets/Property 1=star.svg" alt="" />
+                    <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
                 </span>
             </article>
             <figure className={modalExit} onClick={closeModal}>

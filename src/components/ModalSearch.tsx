@@ -1,7 +1,7 @@
-import { media, style } from "typestyle";
-import { MovieList } from "../containers/MovieList"
-import { colorBlue, colorYellow } from "../theme";
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { classes, media, style } from "typestyle";
+import { MovieList } from "../containers"
+import { colorBlue, colorWhite, colorYellow, font } from "../theme";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppSelector } from "../reducer";
 import { useSearch } from "../hooks";
 import { MovieCard } from "./MovieCard";
@@ -13,22 +13,14 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
     const [movieSearch, setMovieSearch] = useState<string>('')
     const state = useAppSelector(s=>s.movies)
     const { setSearch, movie} = useSearch(state);
+   
     const onSearchValueChange = (event: ChangeEvent<HTMLInputElement>) => {
         setMovieSearch(event.target.value)
     }
-
-      //buscar pelicula
     const handleSubmit = (event:FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         setSearch(movieSearch)
     }
-
-    useEffect(() => {
-        console.log(movie);
-        
-    }, [movie])
-    
-    
 
     return (
         <div className={modalSearch}>
@@ -62,7 +54,12 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
                 </MovieList>
                 
                 :
-                <p>error</p>
+                <div className={errorContainer}>
+                    <figure className={errorFigure}>
+                        <img className={errorImg} src="src/assets/error.png" alt="" />
+                    </figure>
+                    <h3 className={classes(font.h3, style({color:colorWhite.toString()}))}>No se encontraron resultados </h3>
+                </div>
            }
         </div>
     )
@@ -130,3 +127,30 @@ const searchImg = style({
     width: '24px',
     height: '24px',
 })
+
+const errorContainer = style({
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+})
+
+const errorFigure = style(
+    media(
+        {maxWidth:600},
+        {
+            width:'250px',
+            margin:'0px'
+        }
+    )
+)
+const errorImg = style(
+    media(
+        {maxWidth:600},
+        {
+            width:'100%'
+        }
+    )
+)

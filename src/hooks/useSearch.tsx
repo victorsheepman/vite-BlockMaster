@@ -1,21 +1,13 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { MovieState } from "../reducer"
 import { Movie } from "../schema"
+import { filterByTitle, removeRepeat } from "../utils"
 
-function filterByTitle(title:string, movies:Movie[]) {
-    const list:Movie[] = []
-    movies.forEach((movie) => {
-      if (movie.title.toLowerCase().includes(title.toLowerCase())) {
-        list.push(movie)
-      }
-    })
-    return list
-}
+
 
 export const useSearch =(state:MovieState)=>{
 
-    const [search, setSearch] = useState('');
-  
+    const [search, setSearch] = useState('');  
     const [openModal, setOpenModal] = useState(false);
 
 
@@ -27,7 +19,11 @@ export const useSearch =(state:MovieState)=>{
       }
     }
 
-    const movie = searchMovie(search,state.movieList)
+    const movie:Movie[] = useMemo(() =>{
+      const list = searchMovie(search,state.movieList)
+      return removeRepeat(list) 
+    }, [search, state.movieList])
+     
     return {
         movie,
         search,
