@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { media, style } from "typestyle";
 import { colorBlue } from "../theme";
-import { MovieFilter } from "../components/MovieFilter";
-import { ModalSearch } from "../components/ModalSearch";
+import { MovieFilter, ModalSearch } from "../components";
+
 
 
 export const MovieHeader = ()=>{
@@ -10,8 +10,8 @@ export const MovieHeader = ()=>{
     const [modal, setModal] = useState(false);
     return (
         <header className={headerWrapper}>
-            <figure>
-                <img src="assets/images/logo-blockBuster.png" alt="" />
+            <figure className={style(media({maxWidth:600},{display:'none'}))}>
+                <img src="src/assets/logo-blockBuster.png" alt="" />
             </figure>
            
             <MovieFilter />

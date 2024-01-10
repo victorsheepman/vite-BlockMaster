@@ -53,7 +53,7 @@ export const movieSlice = createSlice({
     },
     setMovie:(state, action:PayloadAction<Movie[]>)=>{
       state.movie = action.payload
-    }
+    },
   },
 })
 
