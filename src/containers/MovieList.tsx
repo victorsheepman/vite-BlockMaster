@@ -1,6 +1,6 @@
 import React from "react";
 import { media, style } from "typestyle";
-import { open } from "../theme";
+import { colorBlue, open } from "../theme";
 export const MovieList = ({children}:{children:React.ReactNode})=>(
     <div>
         <section className={movieListStyle}>
@@ -20,7 +20,8 @@ const movieListStyle = style(
         animationName:open,
         animationDuration:'0.5s',
         animationTimingFunction:'linear',
-        animationFillMode:'forwards'
+        animationFillMode:'forwards',
+        backgroundColor:colorBlue.toString()
     },
     media(
         {maxWidth:600},

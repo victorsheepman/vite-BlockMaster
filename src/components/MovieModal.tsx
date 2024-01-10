@@ -61,7 +61,7 @@ const modalWrapper = style({
 },
 media(
     {maxWidth:600},
-    {padding:'16px'}
+    {padding:'2px 16px'}
 )
 )
 
@@ -76,10 +76,7 @@ const modalContainer = style(
         justifyContent: 'space-around',
         fontFamily: monstserrat,
         position: 'relative',
-        animationName: open,
-        animationDuration: '0.5s',
-        animationTimingFunction:'linear',
-        animationFillMode:'forwards',
+       
     },
     media(
         {maxWidth:600},
