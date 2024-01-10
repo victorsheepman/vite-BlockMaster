@@ -1,12 +1,35 @@
 import { media, style } from "typestyle";
 import { MovieList } from "../containers/MovieList"
 import { colorBlue, colorYellow } from "../theme";
-import React from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useAppSelector } from "../reducer";
+import { useSearch } from "../hooks";
+import { MovieCard } from "./MovieCard";
 
 interface ModalSearchProps{
     setModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
+    const [movieSearch, setMovieSearch] = useState<string>('')
+    const state = useAppSelector(s=>s.movies)
+    const { setSearch, movie} = useSearch(state);
+    const onSearchValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setMovieSearch(event.target.value)
+    }
+
+      //buscar pelicula
+    const handleSubmit = (event:FormEvent<HTMLFormElement>)=>{
+        event.preventDefault();
+        setSearch(movieSearch)
+    }
+
+    useEffect(() => {
+        console.log(movie);
+        
+    }, [movie])
+    
+    
+
     return (
         <div className={modalSearch}>
             <div className={modalHeader}>
@@ -16,19 +39,25 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
                     </svg>
 
                 </figure>
-                <form className={searchWrapper}>
-                    <input  className={searchInput} />
+                <form className={searchWrapper} onSubmit={handleSubmit}>
+                    <input  className={searchInput} onChange={onSearchValueChange}/>
                     <button className={searchButton} type="submit">
-                        <img className={searchImg} src="assets/icons/Property 1=search.svg" alt="" />
+                        <img className={searchImg} src="src/assets/Property 1=search.svg" alt="" />
                     </button>
                 </form>
             </div>
            {
-               [].length !==0 ?
+               movie.length !==0 ?
                 
                 <MovieList>
-                    {[].map(()=>(
-                       <h1>hola</h1>
+                    {movie.map((item, index)=>(
+                       <MovieCard 
+                            key={index} 
+                            title={item.title} 
+                            overview={item.overview} 
+                            vote_average={item.vote_average} 
+                            poster_path={item.poster_path} 
+                        />
                     ))}
                 </MovieList>
                 

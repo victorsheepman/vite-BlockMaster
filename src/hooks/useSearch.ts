@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { MovieState, setMovie, useAppDispatch } from "../reducer"
+import { MovieState } from "../reducer"
 import { Movie } from "../schema"
 
 function filterByTitle(title:string, movies:Movie[]) {
@@ -13,7 +13,7 @@ function filterByTitle(title:string, movies:Movie[]) {
 }
 
 export const useSearch =(state:MovieState)=>{
-    const dispatch = useAppDispatch() 
+
     const [search, setSearch] = useState('');
   
     const [openModal, setOpenModal] = useState(false);
@@ -28,7 +28,6 @@ export const useSearch =(state:MovieState)=>{
     }
 
     const movie = searchMovie(search,state.movieList)
-    dispatch(setMovie(movie))
     return {
         movie,
         search,
