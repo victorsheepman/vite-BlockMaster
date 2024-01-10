@@ -13,8 +13,6 @@ type ListMovie = {
 
 export interface MovieState {
     movieList: Movie[],
-    page:number,
-    movie:Movie[],
     filter: FilterMovie,
     list: ListMovie
 }
@@ -22,8 +20,6 @@ export interface MovieState {
 
 const initialState: MovieState = {
   movieList:[],
-  page:1,
-  movie:[],
   filter:FilterMovie.All,
   list:{
     all: getAllIds(movieListMock),
@@ -48,16 +44,10 @@ export const movieSlice = createSlice({
     setFilter: (state, action: PayloadAction<FilterMovie>) => {
       state.filter = action.payload
     },
-    setPage:(state,  action: PayloadAction<number>)=>{
-        state.page = action.payload
-    },
-    setMovie:(state, action:PayloadAction<Movie[]>)=>{
-      state.movie = action.payload
-    },
   },
 })
 
-export const { addMovie, setFilter, setPage, setMovie } = movieSlice.actions
+export const { addMovie, setFilter } = movieSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectMovie = (state: RootState) => state.movies
