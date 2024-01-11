@@ -34,7 +34,7 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
                 <form className={searchWrapper} onSubmit={handleSubmit}>
                     <input  className={searchInput} onChange={onSearchValueChange}/>
                     <button className={searchButton} type="submit">
-                        <img className={searchImg} src="src/assets/Property 1=search.svg" alt="" />
+                        <img className={searchImg} src="/Property 1=search.svg" alt="" />
                     </button>
                 </form>
             </div>
