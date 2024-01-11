@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addMovie, useAppDispatch } from "../reducer";
+import { setMovie, useAppDispatch } from "../reducer";
 
 
 export const useGetData = () => {
@@ -12,7 +12,7 @@ export const useGetData = () => {
             try {
               const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=ffae6ceb377fb3d244739ecd9b2c1a1d&page=${page}`);
               const json = await res.json();
-              dispatch(addMovie(json.results))
+              dispatch(setMovie(json.results))
             } catch (error) {
               console.log(error);
             }    

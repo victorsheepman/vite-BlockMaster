@@ -1,9 +1,9 @@
 import { Movie } from "../schema";
 
-export const removeRepeat = (array:Movie[]) => {
+export const removeRepeat = (list:Movie[]) => {
     const uniqueKeySet = new Set();
-    return array.filter((obj) => {
-        const key = obj.id;
+    return list.filter((movie) => {
+        const key = movie.id;
         if (!uniqueKeySet.has(key)) {
             uniqueKeySet.add(key);
             return true;

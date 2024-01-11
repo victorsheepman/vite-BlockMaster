@@ -19,13 +19,13 @@ export const useSearch =(state:MovieState)=>{
       }
     }
 
-    const movie:Movie[] = useMemo(() =>{
+    const foundMovies:Movie[] = useMemo(() =>{
       const list = searchMovie(search,state.movieList)
       return removeRepeat(list) 
     }, [search, state.movieList])
      
     return {
-        movie,
+        foundMovies,
         search,
         setSearch,
         setOpenModal,

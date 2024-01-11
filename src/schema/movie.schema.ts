@@ -15,7 +15,7 @@ export interface Movie {
     release_date:      string;
 }
 
-export enum FilterMovie {
+export enum ListFilter {
     All = 'all',
     LeastValue = 'leastValued',
     MostValued = 'mostValued'

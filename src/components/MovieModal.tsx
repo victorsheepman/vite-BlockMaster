@@ -15,6 +15,7 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
         setModal(false);
         event.stopPropagation();
     }
+    const labelType = vote_average >= 7 ?  style(borderColor(colorYellow.toString())) : style(borderColor(colorNormal.toString()))
   return (
     <div className={modalWrapper}>
         <div className={modalContainer}>
@@ -31,7 +32,7 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
             </article>
             <article className={modalCard}>
                 <img src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
-                <span className={( classes(label,labelText,vote_average >=7 ? style({border: `3px solid ${colorYellow.toString()}`}): style({border:`3px solid ${colorNormal.toString()}`}))) }>
+                <span className={classes(label, labelText , labelType)}>
                     {vote_average}
                     <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
                 </span>
@@ -193,3 +194,9 @@ const modalExit = style(
         }
     )
 );
+
+const borderColor = (color:string)=>{
+    return {
+        border: `3px solid ${color}`
+    }
+}

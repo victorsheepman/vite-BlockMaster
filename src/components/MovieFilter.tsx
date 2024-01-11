@@ -1,28 +1,28 @@
 import { style } from "typestyle";
 import { colorWhite, colorYellow } from "../theme";
 import { useState } from "react";
-import { FilterMovie } from "../schema";
+import { ListFilter } from "../schema";
 import { setFilter, useAppDispatch } from "../reducer";
 
 export const MovieFilter =()=>{
     const dispatch = useAppDispatch()
-    const [isActive, setIsActive] = useState<FilterMovie>(FilterMovie.All)
-    const handlerClick = (filter:FilterMovie)=>{
+    const [isActive, setIsActive] = useState<ListFilter>(ListFilter.All)
+    const handlerClick = (filter:ListFilter)=>{
         setIsActive(filter) 
         dispatch(setFilter(filter))
     }
-
+    
     return(
         <ul className={filterWrapper}>
-            <li className={filterListItem} onClick={()=>handlerClick(FilterMovie.All)}>
-                <span className={isActive === FilterMovie.All ? filterActive : filterInactive}>Todas</span>    
+            <li className={filterListItem} onClick={()=>handlerClick(ListFilter.All)}>
+                <span className={isActive === ListFilter.All ? filterActive : filterInactive}>Todas</span>    
             </li>
-            <li className={filterListItem}onClick={()=>handlerClick(FilterMovie.MostValued)} >
-                <span className={isActive === FilterMovie.MostValued ? filterActive : filterInactive}>Más valoradas</span> 
+            <li className={filterListItem}onClick={()=>handlerClick(ListFilter.MostValued)} >
+                <span className={isActive === ListFilter.MostValued ? filterActive : filterInactive}>Más valoradas</span> 
 
             </li>
-            <li className={filterListItem} onClick={()=>handlerClick(FilterMovie.LeastValue)} >
-                <span className={isActive === FilterMovie.LeastValue ? filterActive : filterInactive}>Menos valoradas</span>
+            <li className={filterListItem} onClick={()=>handlerClick(ListFilter.LeastValue)} >
+                <span className={isActive === ListFilter.LeastValue ? filterActive : filterInactive}>Menos valoradas</span>
             </li>
         </ul>
     )
