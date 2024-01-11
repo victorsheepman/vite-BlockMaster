@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { classes, media, style } from 'typestyle';
-import { colorNormal, colorYellow, label, labelImg, labelText } from '../theme';
+import { label, labelImg, labelText, labelType } from '../theme';
 import { MovieModal } from './MovieModal';
 
 interface MovieCardProps {
@@ -10,25 +10,22 @@ interface MovieCardProps {
     poster_path:string
 }
 export const MovieCard:React.FC<MovieCardProps> = ({vote_average, poster_path, overview, title}) => {
-    const [modal, setModal] = useState(false);
-    const handleClick =()=>{
-        setModal(true); 
-    }
+    const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className={movieCardWrapper} onClick={handleClick}>
+    <div className={movieCardWrapper} onClick={() => setIsOpen(true)}>
         <img  className={movieCardImg} src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
-        <span className={( classes(label,labelText,vote_average >=7 ? style({border: `3px solid ${colorYellow.toString()}`}): style({border:`3px solid ${colorNormal.toString()}`}))) }>
+        <span className={classes(label,labelText,style(labelType(vote_average)))}>
             {vote_average}
             <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
         </span>
         {
-            modal ? 
+            isOpen ? 
                 <MovieModal 
                     title={title} 
                     overview={overview} 
                     poster_path={poster_path} 
                     vote_average={vote_average} 
-                    setModal={setModal} 
+                    setModal={setIsOpen} 
                 /> 
             : null
         }

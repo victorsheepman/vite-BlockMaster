@@ -1,5 +1,7 @@
 import { media, style } from "typestyle"
 import { monstserrat } from "./fonts"
+import { colorNormal, colorYellow } from "./colors"
+
 
 export const label = style(
     {
@@ -61,3 +63,15 @@ export const labelImg = style(
         }
     )
 )
+
+export const labelType = (points:number) =>{
+    if (points >= 7) {
+        return {
+            border: `3px solid ${colorYellow.toString()}`
+        }
+    }else{
+        return {
+            border: `3px solid ${colorNormal.toString()}`
+        }
+    }
+}

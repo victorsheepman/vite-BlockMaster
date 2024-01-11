@@ -1,6 +1,6 @@
 import React from 'react'
 import { classes, media, style } from 'typestyle'
-import { buttonImg, buttonMixin, buttonSmall, colorNormal, colorWhite, colorYellow, label, labelImg, labelText, monstserrat, open, porcentaje } from '../theme'
+import { buttonImg, buttonMixin, buttonSmall,  colorWhite, label, labelImg, labelText, labelType, monstserrat, open, porcentaje } from '../theme'
 
 interface MovieModalProps {
     title:string
@@ -15,7 +15,6 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
         setModal(false);
         event.stopPropagation();
     }
-    const labelType = vote_average >= 7 ?  style(borderColor(colorYellow.toString())) : style(borderColor(colorNormal.toString()))
   return (
     <div className={modalWrapper}>
         <div className={modalContainer}>
@@ -32,7 +31,7 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
             </article>
             <article className={modalCard}>
                 <img src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
-                <span className={classes(label, labelText , labelType)}>
+                <span className={classes(label, labelText ,style(labelType(vote_average)))}>
                     {vote_average}
                     <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
                 </span>
@@ -194,9 +193,3 @@ const modalExit = style(
         }
     )
 );
-
-const borderColor = (color:string)=>{
-    return {
-        border: `3px solid ${color}`
-    }
-}

@@ -1,6 +1,6 @@
-import { classes, media, style } from "typestyle";
+import { media, style } from "typestyle";
 import { MovieList } from "../containers"
-import { colorBlue, colorWhite, colorYellow, font } from "../theme";
+import { colorBlue, colorWhite, colorYellow, inter } from "../theme";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useAppSelector } from "../reducer";
 import { useSearch } from "../hooks";
@@ -12,7 +12,7 @@ interface ModalSearchProps{
 export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
     const [movieSearch, setMovieSearch] = useState<string>('')
     const state = useAppSelector(s=>s.movies)
-    const { setSearch, movie} = useSearch(state);
+    const { setSearch, foundMovies} = useSearch(state);
    
     const onSearchValueChange = (event: ChangeEvent<HTMLInputElement>) => {
         setMovieSearch(event.target.value)
@@ -39,16 +39,16 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
                 </form>
             </div>
            {
-               movie.length !==0 ?
+               foundMovies.length !==0 ?
                 
                 <MovieList>
-                    {movie.map((item, index)=>(
+                    {foundMovies.map((movie, index)=>(
                        <MovieCard 
                             key={index} 
-                            title={item.title} 
-                            overview={item.overview} 
-                            vote_average={item.vote_average} 
-                            poster_path={item.poster_path} 
+                            title={movie.title} 
+                            overview={movie.overview} 
+                            vote_average={movie.vote_average} 
+                            poster_path={movie.poster_path} 
                         />
                     ))}
                 </MovieList>
@@ -58,7 +58,7 @@ export const ModalSearch:React.FC<ModalSearchProps> = ({setModal}) => {
                     <figure className={errorFigure}>
                         <img className={errorImg} src="src/assets/error.png" alt="" />
                     </figure>
-                    <h3 className={classes(font.h3, style({color:colorWhite.toString()}))}>No se encontraron resultados </h3>
+                    <h3 className={modalErrorTitle}>No se encontraron resultados </h3>
                 </div>
            }
         </div>
@@ -154,3 +154,14 @@ const errorImg = style(
         }
     )
 )
+
+const modalErrorTitle = style({
+    fontFamily: inter, 
+    fontSize: '37px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '32px',
+    letterSpacing: '0em',
+    textAlign: 'left',
+    color:colorWhite.toString()
+})
