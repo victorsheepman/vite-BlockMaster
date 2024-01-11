@@ -11,7 +11,7 @@ export const MovieHeader = ()=>{
     return (
         <header className={headerWrapper}>
             <figure className={style(media({maxWidth:600},{display:'none'}))}>
-                <img src="src/assets/logo-blockBuster.png" alt="" />
+                <img src="/logo-blockBuster.png" alt="" />
             </figure>
            
             <MovieFilter />
