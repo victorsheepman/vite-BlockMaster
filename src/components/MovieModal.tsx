@@ -33,7 +33,7 @@ export const MovieModal:React.FC<MovieModalProps> = ({title, overview, poster_pa
                 <img src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
                 <span className={classes(label, labelText ,style(labelType(vote_average)))}>
                     {vote_average}
-                    <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
+                    <img className={labelImg} src="assets/Property 1=star.svg" alt="" />
                 </span>
             </article>
             <figure className={modalExit} onClick={closeModal}>

@@ -16,7 +16,7 @@ export const MovieCard:React.FC<MovieCardProps> = ({vote_average, poster_path, o
         <img  className={movieCardImg} src={`//image.tmdb.org/t/p/w220_and_h330_face${poster_path}`} alt="" />
         <span className={classes(label,labelText,style(labelType(vote_average)))}>
             {vote_average}
-            <img className={labelImg} src="src/assets/Property 1=star.svg" alt="" />
+            <img className={labelImg} src="assets/Property 1=star.svg" alt="" />
         </span>
         {
             isOpen ? 
