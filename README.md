@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+## React-BlockMaster: The Movie Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+React-BlockMaster: The Movie Page es una aplicación web diseñada para ofrecer a los usuarios una experiencia única al explorar y descubrir películas. Con un enfoque en el diseño receptivo, mejoras en el Carousel, integración con la API de The Movie DB, y características como paginación e Intersection Observer, la aplicación busca proporcionar una interfaz intuitiva y atractiva para la búsqueda y exploración de películas.
 
-Currently, two official plugins are available:
+## Novedades
+- Diseño Receptivo
+La aplicación presenta un diseño receptivo que se adapta a diferentes tamaños de pantalla, garantizando una experiencia de usuario óptima en dispositivos móviles, tabletas y computadoras.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Integración con la API de The Movie DB
+La aplicación se integra con la API de The Movie DB para proporcionar información actualizada sobre películas, incluyendo detalles como sinopsis, reparto, calificaciones y más. Esto asegura que la información de la película esté siempre actualizada y precisa.
 
-## Expanding the ESLint configuration
+- Paginación
+Se ha implementado un sistema de paginación que permite a los usuarios explorar diferentes páginas de resultados de películas de manera fácil y eficiente. Esto facilita la navegación a través de grandes conjuntos de datos.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
